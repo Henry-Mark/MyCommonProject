@@ -1,4 +1,4 @@
-package com.henry.commlibrary;
+package com.henry.commlibrary.activity;
 
 import android.content.Context;
 import android.content.Intent;

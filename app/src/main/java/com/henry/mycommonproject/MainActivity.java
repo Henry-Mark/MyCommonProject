@@ -2,7 +2,7 @@ package com.henry.mycommonproject;
 
 import android.os.Bundle;
 
-import com.henry.commlibrary.BaseLogActivity;
+import com.henry.commlibrary.activity.BaseLogActivity;
 
 public class MainActivity extends BaseLogActivity {
 
