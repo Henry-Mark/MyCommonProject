@@ -6,6 +6,11 @@
     android:layout_height="match_parent"
     tools:context="com.henry.mycommonproject.MainActivity">
 
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
 
     <!--<android.support.v7.widget.RecyclerView-->
         <!--android:layout_width="@dimen/x160"-->
