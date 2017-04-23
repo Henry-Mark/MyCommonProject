@@ -7,9 +7,9 @@
     tools:context="com.henry.mycommonproject.MainActivity">
 
 
-    <android.support.v7.widget.RecyclerView
-        android:layout_width="@dimen/x160"
-        android:layout_height="@dimen/y240">
+    <!--<android.support.v7.widget.RecyclerView-->
+        <!--android:layout_width="@dimen/x160"-->
+        <!--android:layout_height="@dimen/y240">-->
 
-    </android.support.v7.widget.RecyclerView>
+    <!--</android.support.v7.widget.RecyclerView>-->
 </RelativeLayout>

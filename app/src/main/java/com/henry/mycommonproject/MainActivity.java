@@ -1,7 +1,6 @@
 package com.henry.mycommonproject;
 
 import android.os.Bundle;
-import android.widget.AbsListView;
 
 import com.henry.commlibrary.activity.BaseLogActivity;
 
