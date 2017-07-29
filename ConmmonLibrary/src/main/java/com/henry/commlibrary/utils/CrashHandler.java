@@ -1,5 +1,6 @@
 package com.henry.commlibrary.utils;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -26,10 +27,11 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
     private static final String TAG = CrashHandler.class.getSimpleName();
     private static final boolean DEBUG = true;
 
-    private static final String PATH = Environment.getExternalStorageDirectory().getPath() + "/AppTest/log/";
+    private static final String PATH = Environment.getExternalStorageDirectory().getPath() +
+            "/Android/data/liandisys.com.cn.intelligentlogistics/log/";
 
     private static final String FILE_NAME = "crash";
-    private static final String FILE_NAME_SUFFIX = ".trace";
+    private static final String FILE_NAME_SUFFIX = ".txt";
 
     // 单例模式
     private static CrashHandler instance;
@@ -106,6 +108,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
      *
      * @param e
      */
+    @TargetApi(Build.VERSION_CODES.N)
     private void dumpExceptionToSDCard(Throwable e) throws IOException {
         //如果ＳＤ卡不存在或无法使用，则无法把异常信息写入ＳＤ卡
         if (!Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
@@ -122,14 +125,17 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
 
         long current = System.currentTimeMillis();
         String time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(current));
-        File file = new File(PATH + FILE_NAME + time + FILE_NAME_SUFFIX);
+        File file = new File(PATH + FILE_NAME + FILE_NAME_SUFFIX);
 
         try {
-            PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(file)));
+            PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(file, true)));
             pw.println(time);
             dumpPhoneInfo(pw);
             pw.println();
             e.printStackTrace(pw);
+            pw.println();
+            pw.println();
+            pw.flush();
             pw.close();
 
         } catch (Exception ex) {
@@ -141,10 +147,12 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
     private void dumpPhoneInfo(PrintWriter pw) {
         PackageManager pm = context.getPackageManager();
         PackageInfo pi = pm.getPackageArchiveInfo(context.getPackageName(), PackageManager.GET_ACTIVITIES);
-        pw.print("App Version: ");
-        pw.print(pi.versionName);
-        pw.print("_");
-        pw.println(pi.versionCode);
+        if (pi != null) {
+            pw.print("App Version: ");
+            pw.print(pi.versionName);
+            pw.print("_");
+            pw.println(pi.versionCode);
+        }
 
         //Android 版本号
         pw.print("OS Version: ");
