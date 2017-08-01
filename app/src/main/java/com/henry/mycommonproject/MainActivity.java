@@ -1,11 +1,13 @@
 package com.henry.mycommonproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
 import com.henry.commlibrary.activity.BaseLogActivity;
 import com.henry.commlibrary.fragment.base.BaseMultiChoiceDialogFragment;
+import com.henry.mycommonproject.activity.ImgActivity;
 import com.henry.mycommonproject.httpTest.LoginRequeset;
 
 import java.util.ArrayList;
@@ -23,7 +25,8 @@ public class MainActivity extends BaseLogActivity {
             @Override
             public void onClick(View v) {
 //                testHttp();
-                showDialoglist();
+//                showDialoglist();
+                startActivity(new Intent(MainActivity.this, ImgActivity.class));
             }
         });
     }
