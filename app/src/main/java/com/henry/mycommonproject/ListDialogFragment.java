@@ -3,7 +3,7 @@ package com.henry.mycommonproject;
 import android.annotation.SuppressLint;
 import android.view.View;
 
-import com.henry.commlibrary.fragment.base.BaseListDialogFragment;
+import com.henry.commlibrary.fragment.dialog.base.BaseListDialogFragment;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.henry.commlibrary.fragment.base;
+package com.henry.commlibrary.fragment.dialog.base;
 
 import android.app.Dialog;
 import android.content.DialogInterface;

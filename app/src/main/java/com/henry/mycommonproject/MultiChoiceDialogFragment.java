@@ -1,9 +1,8 @@
 package com.henry.mycommonproject;
 
-import android.annotation.SuppressLint;
 import android.view.View;
 
-import com.henry.commlibrary.fragment.base.BaseMultiChoiceDialogFragment;
+import com.henry.commlibrary.fragment.dialog.base.BaseMultiChoiceDialogFragment;
 
 import java.util.List;
 

@@ -1,13 +1,12 @@
 package com.henry.mycommonproject;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Toast;
 
 import com.henry.commlibrary.activity.BaseLogActivity;
-import com.henry.commlibrary.fragment.base.BaseMultiChoiceDialogFragment;
-import com.henry.mycommonproject.activity.ImgActivity;
+import com.henry.commlibrary.fragment.dialog.base.BaseMultiChoiceDialogFragment;
 import com.henry.mycommonproject.httpTest.LoginRequeset;
 
 import java.util.ArrayList;
@@ -26,9 +25,16 @@ public class MainActivity extends BaseLogActivity {
             public void onClick(View v) {
 //                testHttp();
 //                showDialoglist();
-                startActivity(new Intent(MainActivity.this, ImgActivity.class));
+//                startActivity(new Intent(MainActivity.this, ImgActivity.class));
+                showPopupWindow();
             }
         });
+    }
+
+    private void showPopupWindow() {
+        TestPopupWindow window = new TestPopupWindow(this);
+        window.showAtLocation(findViewById(R.id.activity_main), Gravity.BOTTOM | Gravity
+                .CENTER_HORIZONTAL, 0, 0); //设置layout在PopupWindow中显示的位置
     }
 
 

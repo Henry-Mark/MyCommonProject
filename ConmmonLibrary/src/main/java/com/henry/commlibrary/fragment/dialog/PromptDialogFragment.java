@@ -1,4 +1,4 @@
-package com.henry.commlibrary.fragment;
+package com.henry.commlibrary.fragment.dialog;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
@@ -10,44 +10,34 @@ import android.support.v7.app.AlertDialog;
 
 /**
  * author : Henry
- * time :  2017/8/1 14:30
+ * time :  2017/7/25 11:37
  * email : heneymark@gmail.com
- * description :有两个按钮的提示对话框
+ * description :提示对话框，单个按钮
  */
 @SuppressLint("ValidFragment")
-public class PromptDialogFragment2 extends DialogFragment {
+public class PromptDialogFragment extends DialogFragment {
 
+    OnConformListener listener = null;
     String title;
     String msg;
+    String btnName;
     int flag;
-    boolean isCancelable = true;
-    OnConformListener listener = null;
 
-    /**
-     * 构造方法
-     *
-     * @param title
-     * @param msg
-     * @param flag
-     */
-    public PromptDialogFragment2(String title, String msg, int flag) {
-        this(title, msg, flag, true);
-    }
-
-    public PromptDialogFragment2(String title, String msg, int flag, boolean isCancelable) {
+    public PromptDialogFragment(String title, String msg, String btnName, int flag) {
         this.title = title;
         this.msg = msg;
+        this.btnName = btnName;
         this.flag = flag;
-        this.isCancelable = isCancelable;
     }
 
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+        setCancelable(false);
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setMessage(msg);
         builder.setTitle(title);
-        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(btnName, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 if (listener != null) {
@@ -55,14 +45,7 @@ public class PromptDialogFragment2 extends DialogFragment {
                 }
             }
         });
-        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                dismiss();
-            }
-        });
 
-        setCancelable(isCancelable);
         return builder.create();
     }
 
